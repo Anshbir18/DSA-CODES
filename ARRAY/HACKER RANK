@@ -1,0 +1,10 @@
+//HACKER RANK REVERSE ARRAY 
+// QUESTION LINK https://www.hackerrank.com/challenges/arrays-ds/problem?isFullScreen=true
+
+vector<int> reverseArray(vector<int> a) {
+    reverse(a.begin(), a.end());
+    return a;
+};
+
+// if we ant to reverse a vector then we can use the inbuilt reverse function of the vector 
+// the reverse function takes two input the start index(obtained by a.begin()) and the end index (obtained by a.end())
