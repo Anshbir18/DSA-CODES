@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+class node{
+public:
+int data;
+node*next;
+node(int d){
+  this->data=d;
+  this->next=NULL;
+}
+};
+
+class link_list{
+public:
+node*head;
+
+link_list(){
+  this->head=NULL;
+}
+
+node*begin(){
+  return head;
+}
+
+
+void append_ll(){
+  int data;
+  cin>>data;
+  node*temp=new node(data);
+  if(head==NULL){
+    head=temp;
+  }
+  else{
+    node*p=head;
+    while(p->next!=NULL){
+      p=p->next;
+    }
+    p->next=temp;
+    }
+  }
+};
+
+void print(node*head){
+  node*p=head;
+  while(p!=NULL){
+    cout<<p->data;
+    if (p->next != NULL) {
+      cout << "->";
+    }
+    p=p->next;
+  }
+}
+int main() {
+  link_list ansh;
+  cout<<"enter the length of the link list " ;
+  int len;
+  cin>>len;
+  while(len>=1){
+    ansh.append_ll();
+    len=len-1;
+  }
+  
+  node *y = ansh.begin();
+  print(y);
+}
