@@ -1,0 +1,88 @@
+#include <iostream>
+using namespace std;
+class node{
+public:
+int data;
+node*next;
+
+node(int d){
+  this->data=d;
+  this->next=NULL;
+}
+};
+
+void insertAtHead(node* &head, int d) {
+  // new node create
+  node* temp = new node(d);
+  temp -> next = head;
+  head = temp;
+}
+void insertAtTail(node* &tail,int d){
+  // new node create
+  node* temp = new node(d);
+  tail->next=temp;
+  tail=tail->next;
+  
+}
+void print(node* &head) {
+  node* temp = head;
+  while(temp != NULL ) {
+      cout << temp -> data << " ";
+      temp = temp -> next;
+    }
+    cout << endl;
+}
+
+void insert_at_any(node*&tail,node*&head,int data,int pos){
+
+  if(pos==1){
+    insertAtHead(head,data);
+    return;
+  }
+  node*temp=head;
+  int cnt=1;
+  while(cnt<pos-1){
+    temp=temp->next;
+    cnt++;
+  }
+  if(temp->next==NULL){
+    insertAtTail(tail,data);
+      return ;
+  }
+  //creating a node for data
+  node* p = new node(data);
+  p -> next = temp -> next;
+  temp -> next = p;
+}
+
+
+void middle_ele(node*&head){
+  node*fast=head;
+  node*slow=head; 
+
+  while(fast!=NULL &&fast->next!=NULL){
+    slow=slow->next;
+    fast=fast->next->next;
+  }
+  cout<< slow->data;
+}
+int main() {
+  //create a new node
+  node* node1=new node(10);
+  //making head pointer and tail pointer
+  node* head = node1;
+  node*tail =node1;
+  print(head);
+  insertAtHead(head,0);
+  insertAtTail(tail,12);
+  print(head);
+  insert_at_any(tail,head,33,4);
+  insert_at_any(tail,head,12,4);
+  insert_at_any(tail,head,32,4);
+  insert_at_any(tail,head,34,4);
+  //insert_at_any(tail,head,31,8);
+  print(head);
+
+  cout<<"he;lllo miud"<<endl;
+  middle_ele(head);
+}
